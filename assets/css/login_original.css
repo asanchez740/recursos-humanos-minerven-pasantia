@@ -1,0 +1,115 @@
+html{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	font-family: sans-serif;
+	background: rgba(121,147,245,.5);
+	background-image: url(imagenes/fondo1.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-color: #464646;
+}
+
+.loginBox
+{
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 350px;
+	height: 260px;
+	padding: 17px 30px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.7);
+	border-radius: 5px;
+	box-shadow: 
+  	0px 0px 0px 5px rgba( 255,255,255,0.1 ), 
+  	0px 4px 20px rgba( 0,0,0,0.1 );
+
+	
+}
+.user{
+	width: 110px;
+	height: 110px;
+	border-radius: hidden;
+	position: absolute;
+	top: calc(-100px/2);
+	left: calc(50% - 50px);
+}
+h2
+{
+	margin: 0;
+	padding: 0 0 20px;
+	color: #fffff;
+	text-align: center;
+}
+label
+{
+	font-family: 'Open Sans';
+}
+.loginBox p
+{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+.loginBox input
+{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.loginBox input[type="text"],
+.loginBox input[type="password"]
+{
+	outline: none;
+	height: 34px;
+	
+	font-size: 14px;
+}
+::placeholder
+{
+	font-family: 'Open Sans';
+	color: rgba(255,255,255,.5);
+
+}
+.loginBox input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 37px;
+
+	color: #fff;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 7px;
+}
+.loginBox input[type="submit"]:hover
+{
+	background: #00ace6;
+	color: #262626;
+}
+.loginBox a
+{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	
+	font-family: 'Open Sans';
+}
+
+

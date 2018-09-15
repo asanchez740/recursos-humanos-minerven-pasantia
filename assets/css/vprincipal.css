@@ -1,0 +1,176 @@
+	 html{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	font-family: sans-serif;
+	background: rgba(121,147,245,.5);
+	
+	background-image: url(imagenes/fondo1.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+ 	background-attachment: fixed;
+ 	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-color: #464646;
+}
+::placeholder
+{
+	font-family: 'Arial, Helvetica, sans-serif';
+	color: rgba(255,255,255,.5);
+	font-size: 13px;
+	color: black;
+}
+
+textarea
+{
+	resize: none;
+	width: 100%;
+	
+	color: black;
+	
+}
+h2{
+	margin: 0;	
+	color: black;
+	text-align: left;
+	border-bottom: 1px solid #000000;
+	font-family: 'Arial, Helvetica, sans-serif';
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 60px;
+}
+h3{
+	margin: 0;	
+	color: black;
+	text-align: left;
+	
+	font-family: 'Arial, Helvetica, sans-serif';
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 60px;
+}
+label{
+	font-family: 'Arial, Helvetica, sans-serif';
+	font-size: 13px;
+	color: black;
+}
+
+.cabezera
+{
+	width: 101%;
+	color: black;
+}
+.fecha
+{
+	text-align: right;
+}
+.usario
+{
+	text-align: left;
+	color: black;
+}
+.codigo_cs
+{
+	min-width: 130%;
+	max-width: 130%;
+}
+.unidads
+{
+	min-width: 160%;
+	max-width: 160%;
+}
+.visor2
+{
+	text-align: center;
+}
+
+.principal
+{
+	abackground: rgba(0,0,0,.2);
+	background:#DFE1D7;
+	border-radius: 5px;
+	box-shadow: 
+  0px 0px 0px 3px rgba( 0,0,0,0.7 ), 
+  0px 4px 20px rgba( 0,0,0,0.33 );
+	color: black;
+}
+.principal label
+{
+	
+	3width: 60%;
+	1text-align: left;
+}
+.principal select,option
+{
+	font-size: 12px;
+	font-family: 'Arial, Helvetica, sans-serif';
+}
+.principal textarea
+{
+	
+	color: black;
+}
+.detalle-sr-g-rrhh{
+	font-size: 16px;  
+}
+.encabezado{
+  font-weight: bold;
+  font-size:25px;
+  font-family:comic;
+}
+.encabezado-tablas{
+  font-weight: bold;
+  font-size:18px;
+  font-family:comic;
+}
+
+.cod-solicitud{   /*Muestra el Codigo de la solicitud en las pantallas de Seguimiento */
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 0.7; 
+}
+.espacio{
+  padding: 0 10px;
+}
+
+#visor
+{
+	width: 350px;
+	height: 230px;
+	padding: 20px;
+	padding-left: 40px; 
+	color: black;
+	overflow: auto;
+	border-radius: 4px;
+
+background: rgba(0,0,0,.2);
+	border-radius: 5px;
+	box-shadow: 
+  0px 0px 0px 3px rgba( 0,0,0,0.7 ), 
+  0px 4px 20px rgba( 0,0,0,0.33 );
+	color: black;
+	text-align: left; 
+	
+}
+#visor label
+{
+	font-family: 'Arial, Helvetica, sans-serif';
+	width: 80%;
+	font-size: 12px;
+	color: black;
+}
+#visor::-webkit-scrollbar
+{
+	width: 7px;
+}
+#visor::-webkit-scrollbar-thumb
+{
+	background: white;
+	border-radius: 5px;
+}

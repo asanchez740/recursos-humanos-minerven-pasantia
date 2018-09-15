@@ -1,0 +1,337 @@
+<?php
+
+class Dynamic_menu {
+
+    private $ci;                // for CodeIgniter Super Global Reference.
+    private $id_menu        = 'id="menu"';
+    private $class_menu        = 'class="menu"';
+    private $class_parent    = 'class="parent"';
+    private $class_last        = 'class="last"';
+
+    // --------------------------------------------------------------------
+
+    /**
+     * PHP5 Constructor
+     *
+     */
+    function __construct()
+    {
+		$this->ci = &get_instance();
+		$this->db3 = $this->ci->load->database('menu',TRUE);
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * build_menu($table, $type)
+     *
+     * Description:
+     *
+     * builds the Dynaminc dropdown menu
+     * $table allows for passing in a MySQL table name for different menu tables.
+     * $type is for the type of menu to display ie; topmenu, mainmenu, sidebar menu
+     * or a footer menu.
+     *
+     * @param    string    the MySQL database table name.
+     * @param    string    the type of menu to display.
+     * @return    string    $html_out using CodeIgniter achor tags.
+     */
+
+    function obtener_modulos($consultar)
+    {      
+        $i=0;
+        $consultar['indice']=$i;
+
+        $consulta= "SELECT DISTINCT(id), descripcion 
+                    FROM modulos, privilegios 
+                    WHERE modulos.estatus = 'TRUE' 
+                    AND privilegios.tabperso_percedu = ? 
+                    AND modulos.id = privilegios.id_modulos
+                    AND privilegios.estatus = 'TRUE'";
+        
+        $query=$this->db3->query($consulta, 
+                                array($consultar['cedula']));
+
+         if ($query->num_rows() > 0)
+        {
+            // `id`, `title`, `link_type`, `page_id`, `module_name`, `url`, `uri`, `dyn_group_id`, `position`, `target`, `parent_id`, `show_menu`
+
+            foreach ($query->result() as $row)
+            {   
+                $i=$consultar['indice'];
+                //echo $row->id.$row->descripcion.'<br>';
+                $menu[$i]['id']= $row->id;
+                $menu[$i]['title']= $row->descripcion;
+                $menu[$i]['parent']= '0';
+                $menu[$i]['is_parent']= TRUE;
+                $menu[$i]['tipo']= 0; // Es módulo
+                $i++;
+                $consultar['id_modulos']= $row->id;
+                $consultar['indice']=$i;
+                list($menu, $consultar)=$this->obtener_submodulos($consultar, $menu);
+                //echo $consultar['indice'];
+            }
+        }
+        $query->free_result();    // The $query result object will no longer be available
+        return $menu;
+
+    }  
+
+    function obtener_submodulos($consultar, $menu)
+    {   
+
+        $consulta= "SELECT DISTINCT(id), descripcion 
+                    FROM submodulos, privilegios 
+                    WHERE submodulos.id_modulos = ? 
+                    AND submodulos.estatus = 'TRUE' 
+                    AND privilegios.tabperso_percedu = ?
+                    AND privilegios.estatus = 'TRUE' 
+                    AND privilegios.id_modulos =?
+                    AND privilegios.id_modulos = submodulos.id_modulos 
+                    ORDER BY submodulos.id ASC";
+
+        $query1=$this->db3->query($consulta, 
+                                array($consultar['id_modulos'], $consultar['cedula'], $consultar['id_modulos']));
+       
+         if ($query1->num_rows() > 0)
+        {
+            // `id`, `title`, `link_type`, `page_id`, `module_name`, `url`, `uri`, `dyn_group_id`, `position`, `target`, `parent_id`, `show_menu`
+
+            foreach ($query1->result() as $row)
+
+            {   $consultar['id_submodulos_aux']= $row->id;
+
+                $permiso=$this->verificar_permisos($consultar);
+
+                if ($permiso=='TRUE'){
+                    //echo $row->id.$row->descripcion.'<br>';
+                    $i=$consultar['indice'];
+                    $menu[$i]['id']= $row->id;
+                    $menu[$i]['title']= $row->descripcion;
+                    $menu[$i]['parent']= $consultar['id_modulos'];
+                    $menu[$i]['is_parent']= TRUE;
+                    $menu[$i]['tipo']= 1; // Es submódulo
+                    $consultar['id_submodulos']= $row->id;
+                    $i++;
+                    $consultar['indice']=$i;
+                    list($menu, $consultar)=$this->obtener_opciones($consultar, $menu);
+
+                }
+
+            }
+        }
+        $query1->free_result();    // The $query result object will no longer be available
+        return array($menu, $consultar);
+    }
+
+     function obtener_opciones($consultar, $menu)
+    {   
+
+        $consulta="SELECT opciones.* 
+                    FROM opciones,privilegios 
+                    WHERE opciones.id = privilegios.id_opciones 
+                    AND opciones.id_modulos = privilegios.id_modulos 
+                    AND opciones.id_submodulos = privilegios.id_submodulos
+                    AND privilegios.tabperso_percedu = ? 
+                    AND opciones.id_modulos = ? 
+                    AND opciones.id_submodulos = ? 
+                    AND privilegios.estatus = 'TRUE' 
+                    ORDER BY opciones.id ASC";
+
+        $query2=$this->db3->query($consulta, 
+                                array($consultar['cedula'], $consultar['id_modulos'], $consultar['id_submodulos']));
+       
+       
+         if ($query2->num_rows() > 0)
+        {
+            // `id`, `title`, `link_type`, `page_id`, `module_name`, `url`, `uri`, `dyn_group_id`, `position`, `target`, `parent_id`, `show_menu`
+
+            foreach ($query2->result() as $row)
+            {   //echo $row->id.'<br>';
+                //echo $row->id.$row->descripcion.'<br>';
+                $i=$consultar['indice'];
+                $menu[$i]['id']= $row->id;
+                $menu[$i]['title']= $row->descripcion;
+                $menu[$i]['url']= $row->url;
+                $menu[$i]['parent']= $consultar['id_submodulos'];
+                $menu[$i]['is_parent']= FALSE;
+                $menu[$i]['tipo']= 2; // Es opción
+                $i++;
+                $consultar['indice']=$i;
+
+            }
+        }
+        $query2->free_result();    // The $query result object will no longer be available
+        return array($menu, $consultar);
+    }
+
+     function verificar_permisos($consultar)
+    {
+        $consulta= "SELECT *
+                    FROM privilegios 
+                    WHERE id_modulos = ? 
+                    AND estatus = 'TRUE' 
+                    AND tabperso_percedu = ?
+                    AND id_submodulos =?";
+
+        $query3=$this->db3->query($consulta, 
+                            array($consultar['id_modulos'], $consultar['cedula'], $consultar['id_submodulos_aux']));
+       
+         if ($query3->num_rows() > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+
+    function build_menu()
+    {   
+        $consultar['cedula']= $this->ci->session->userdata('cedula');
+        $registros=$this->obtener_modulos($consultar);
+        //var_dump($registros);
+
+        // ----------------------------------------------------------------------     
+/*
+        foreach ($registros as $menu)
+        {   
+            $html_out .= '<li>';
+                if ($menu['parent'] == 0)
+                { 
+                  // echo $menu['title'].'<br>';
+                    // CodeIgniter's anchor(uri segments, text, attributes) tag.
+                    $html_out .= anchor(base_url(), $menu['title']);
+                }
+                else
+                {    //echo 'hijo'.$menu['title'].'hijo<br>';
+                    $html_out .='<ul>';
+                    $html_out .='<li>'.anchor(base_url(), $menu['title']);
+                    $html_out .= '</li>';
+                    $html_out .= '</ul>';
+                }
+            $html_out .= '</li>';
+        }
+*/
+        // now we will build the dynamic menus.
+		$html_out = ' <div class="dropdowns">';
+        $html_out .= '<a class="toggleMenu" href="#">Menu</a>';
+        $html_out .= '<ul class="nav">';
+        $contador=1;
+        $contador_aux=1;
+        $tipo_anterior=0;
+
+        // loop through the $menu array() and build the parent menus.
+        foreach ($registros as $menu)
+        {   
+
+            if ($menu['tipo']==0 AND $tipo_anterior==0)    // are we allowed to see this menu?
+            {
+                $html_out .= '<li>';
+            }
+            if ($menu['tipo']==0 AND $tipo_anterior==1)    // are we allowed to see this menu?
+            {
+                $html_out .= '</ul>';
+                $html_out .= '<li>';
+            }
+            if ($menu['tipo']==0 AND $tipo_anterior==2)    // are we allowed to see this menu?
+            {   
+                $html_out .= '</ul>';
+                $html_out .= '<li>';
+                $html_out .= '</ul>';
+            }
+          
+            if ($menu['tipo'] == 1 AND $tipo_anterior==2)
+            {
+                $html_out .= '</ul>';
+            }
+
+            if ($menu['tipo'] == 1 AND $tipo_anterior!=2)
+            {
+                $html_out .= '<ul>';
+            }
+
+            if ($menu['tipo'] == 2 AND $tipo_anterior!=2)
+            {
+                $html_out .= '<ul>';
+                $contador_aux=0;
+            }
+
+            $html_out .= '<li>';
+            $html_out .= anchor(base_url(), $menu['title']);
+            
+            $tipo_anterior=$menu['tipo'];
+
+            
+            
+        }
+
+        $html_out .='</ul>';
+        $html_out .= '</div>';
+        return $html_out;
+    }  
+    /**
+     * get_childs($menu, $parent_id) - SEE Above Method.
+     *
+     * Description:
+     *
+     * Builds all child submenus using a recurse method call.
+     *
+     * @param    mixed    $menu    array()
+     * @param    string    $parent_id    id of parent calling this method.
+     * @return    mixed    $html_out if has subcats else FALSE
+     */
+    function get_childs($menu)
+    {
+        $has_subcats = FALSE;
+
+        $html_out  = '';
+
+        if ($menu['is_parent'] != FALSE)
+        {
+        $html_out .='<ul>';
+        }
+
+        $html_out .= '<li>';
+           
+                $has_subcats = TRUE;
+
+                if ($menu['is_parent'] == TRUE)
+                {
+                    $html_out .=anchor('#'.$menu['url'], ''.$menu['title'].'');
+                }
+                else
+                {
+                    $html_out .=anchor(base_url().$menu['url'], ''.$menu['title'].'');
+                }
+
+       
+        if ($menu['parent'] == 0)
+        {
+            $html_out .='</ul>';
+        }
+        
+
+        return ($has_subcats) ? $html_out : FALSE;
+    }
+	/**
+     * get_childs($menu, $parent_id) - SEE Above Method.
+     *
+     * Description:
+     *
+     * Builds all child submenus using a recurse method call.
+     *
+     * @param    mixed    $menu    array()
+     * @param    string    $parent_id    id of parent calling this method.
+     * @return    mixed    $html_out if has subcats else FALSE
+     */
+
+}
+// ------------------------------------------------------------------------
+// End of Dynamic_menu Library Class.
+
+// ------------------------------------------------------------------------
+/* End of file Dynamic_menu.php */
+/* Location: ../application/libraries/Dynamic_menu.php */  

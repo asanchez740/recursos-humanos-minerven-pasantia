@@ -1,0 +1,627 @@
+reset-this {
+  animation : none;
+  animation-delay : 0;
+  animation-direction : normal;
+  animation-duration : 0;
+  animation-fill-mode : none;
+  animation-iteration-count : 1;
+  animation-name : none;
+  animation-play-state : running;
+  animation-timing-function : ease;
+  backface-visibility : visible;
+  background : 0;
+  background-attachment : scroll;
+  background-clip : border-box;
+  background-color : transparent;
+  background-image : none;
+  background-origin : padding-box;
+  background-position : 0 0;
+  background-position-x : 0;
+  background-position-y : 0;
+  background-repeat : repeat;
+  background-size : auto auto;
+  border : 0;
+  border-style : none;
+  border-width : medium;
+  border-color : inherit;
+  border-bottom : 0;
+  border-bottom-color : inherit;
+  border-bottom-left-radius : 0;
+  border-bottom-right-radius : 0;
+  border-bottom-style : none;
+  border-bottom-width : medium;
+  border-collapse : separate;
+  border-image : none;
+  border-left : 0;
+  border-left-color : inherit;
+  border-left-style : none;
+  border-left-width : medium;
+  border-radius : 0;
+  border-right : 0;
+  border-right-color : inherit;
+  border-right-style : none;
+  border-right-width : medium;
+  border-spacing : 0;
+  border-top : 0;
+  border-top-color : inherit;
+  border-top-left-radius : 0;
+  border-top-right-radius : 0;
+  border-top-style : none;
+  border-top-width : medium;
+  bottom : auto;
+  box-shadow : none;
+  box-sizing : content-box;
+  caption-side : top;
+  clear : none;
+  clip : auto;
+  color : inherit;
+  columns : auto;
+  column-count : auto;
+  column-fill : balance;
+  column-gap : normal;
+  column-rule : medium none currentColor;
+  column-rule-color : currentColor;
+  column-rule-style : none;
+  column-rule-width : none;
+  column-span : 1;
+  column-width : auto;
+  content : normal;
+  counter-increment : none;
+  counter-reset : none;
+  cursor : auto;
+  direction : ltr;
+  display : inline;
+  empty-cells : show;
+  float : none;
+  font : normal;
+  font-family : inherit;
+  font-size : medium;
+  font-style : normal;
+  font-variant : normal;
+  font-weight : normal;
+  height : auto;
+  hyphens : none;
+  left : auto;
+  letter-spacing : normal;
+  line-height : normal;
+  list-style : none;
+  list-style-image : none;
+  list-style-position : outside;
+  list-style-type : disc;
+  margin : 0;
+  margin-bottom : 0;
+  margin-left : 0;
+  margin-right : 0;
+  margin-top : 0;
+  max-height : none;
+  max-width : none;
+  min-height : 0;
+  min-width : 0;
+  opacity : 1;
+  orphans : 0;
+  outline : 0;
+  outline-color : invert;
+  outline-style : none;
+  outline-width : medium;
+  overflow : visible;
+  overflow-x : visible;
+  overflow-y : visible;
+  padding : 0;
+  padding-bottom : 0;
+  padding-left : 0;
+  padding-right : 0;
+  padding-top : 0;
+  page-break-after : auto;
+  page-break-before : auto;
+  page-break-inside : auto;
+  perspective : none;
+  perspective-origin : 50% 50%;
+  position : static;
+
+  quotes : '\201C' '\201D' '\2018' '\2019';
+  right : auto;
+  tab-size : 8;
+  table-layout : auto;
+  text-align : inherit;
+  text-align-last : auto;
+  text-decoration : none;
+  text-decoration-color : inherit;
+  text-decoration-line : none;
+  text-decoration-style : solid;
+  text-indent : 0;
+  text-shadow : none;
+  text-transform : none;
+  top : auto;
+  transform : none;
+  transform-style : flat;
+  transition : none;
+  transition-delay : 0s;
+  transition-duration : 0s;
+  transition-property : none;
+  transition-timing-function : ease;
+  unicode-bidi : normal;
+  vertical-align : baseline;
+  visibility : visible;
+  white-space : normal;
+  widows : 0;
+  width : auto;
+  word-spacing : normal;
+  z-index : auto;
+}
+
+/* Boton del Sistema */
+
+.btn-defecto {
+  color: #303641;
+  background-color: #f0f0f1;
+  border-color: #f0f0f1;
+}
+.btn-defecto:focus,
+.btn-defecto.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-defecto:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-defecto:active,
+.btn-defecto.active,
+.open > .dropdown-toggle.btn-defecto {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-defecto:active:hover,
+.btn-defecto.active:hover,
+.open > .dropdown-toggle.btn-defecto:hover,
+.btn-defecto:active:focus,
+.btn-defecto.active:focus,
+.open > .dropdown-toggle.btn-defecto:focus,
+.btn-defecto:active.focus,
+.btn-defecto.active.focus,
+.open > .dropdown-toggle.btn-defecto.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.btn-defecto:active,
+.btn-defecto.active,
+.open > .dropdown-toggle.btn-defecto {
+  background-image: none;
+}
+.btn-defecto.disabled:hover,
+.btn-defecto[disabled]:hover,
+fieldset[disabled] .btn-defecto:hover,
+.btn-defecto.disabled:focus,
+.btn-defecto[disabled]:focus,
+fieldset[disabled] .btn-defecto:focus,
+.btn-defecto.disabled.focus,
+.btn-defecto[disabled].focus,
+fieldset[disabled] .btn-defecto.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-defecto .badge {
+  color: #fff;
+  background-color: #333;
+}
+
+
+.btn-sesion {
+  font-size: 12px;
+  color: #fff;
+  background-color: #3D4944;
+  border-color: #3D4944;
+}
+
+.btn-sesion:focus,
+.btn-sesion.focus {
+  font-size: 12px;
+  color: #fff;
+  background-color: #3D4944;
+  border-color: #3D4944;
+}
+
+.btn-sesion:hover {
+  font-size: 12px;
+  color: #fff;
+  background-color: #3D4944;
+  border-color: #3D4944;
+}
+
+.btn-sesion:active,
+.btn-sesion.active,
+.open > .dropdown-toggle.btn-sesion {
+  font-size: 12px;
+  color: #fff;
+  background-color: #3D4944;
+  border-color: #3D4944;
+}
+
+.nomargin{  
+  margin-right: 0px; 
+  margin-left: 0px;
+  font-weight: bold;
+
+}
+
+/*--*/
+
+/* Imágen de fondo del sistema */
+
+.fondo {
+  background-image: url(imagenes/fondo1.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #464646;
+  /*background-size: cover;*/
+}
+
+/* Imágen con el logo de la empresa */
+
+.logo-empresa {
+  background-image: url(imagenes/minerven.png);
+  
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #464646;*/
+  /*background-size: cover;*/
+}
+
+/** Formularios **/
+
+.form{
+  color: black;
+  padding: 2px 55px 25px;
+  sbackground: rgba(0,0,0,.3);
+  background:#DFE1D7;
+  box-shadow: 
+  0px 0px 0px 3px rgba( 0,0,0,0.7 ), 
+  0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: table;
+  float: none;
+  margin: 0 auto;
+ 
+ 
+-moz-opacity: 0.8;
+filter: alpha(opacity=80);
+-khtml-opacity: 0.8;
+}
+.form1{
+  color: black;
+  padding: 2px 55px 25px;
+  display: table;
+  float: none;
+  margin: 0 auto;
+}
+.wel{
+  color: black;
+  padding: 2px 55px 25px;
+  sbackground: rgba(0,0,0,.3);
+  background:#DFE1D7;
+  box-shadow: 
+  0px 0px 0px 3px rgba( 0,0,0,0.7 ), 
+  0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 2px;
+  display: table;
+  float: none;
+  margin: 0 auto;
+ 
+ 
+-moz-opacity: 0.8;
+filter: alpha(opacity=80);
+-khtml-opacity: 0.8;
+}
+
+/** Formulario del Login **/
+.form-login{
+/*padding: 2px 55px 25px;*/
+  background:#221D0D;
+  box-shadow: 
+  0px 0px 0px 5px rgba( 255,255,255,0.4 ), 
+  0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: table;
+  float: none;
+  margin: 0 auto;
+ opacity: 0.8;
+-moz-opacity: 0.8;
+filter: alpha(opacity=80);
+-khtml-opacity: 0.8;
+
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h3 {
+  
+  
+  margin-bottom: 5px;
+  /*font-size: 2rem;*/
+  text-align: left;
+  font-family: 'Arial, Helvetica, sans-serif';
+  color: black;
+  
+}
+
+.header p {
+  color: black;
+  font-weight: 300;
+  /*font-size: 1.5rem;*/
+}
+
+.sep {
+  height: 2px;
+  background: #000;
+  width: 100%;
+  opacity: 0.7;
+  /* margin: 0px -25px; */
+}
+
+.inputs {
+  margin-top: 25px;
+
+}
+
+.inputs label {
+  
+  
+  font-size: 13px;
+  
+  font-family: 'Arial, Helvetica, sans-serif';
+  color: black;
+  
+  display: inline;
+}
+
+input::-webkit-input-placeholder {
+ 
+}
+
+input:-moz-placeholder {
+ 
+}
+
+/*--*/
+
+.inputs input[type=email], input[type=password], input[type=text]{
+  font-size: 1.2rem;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  width: 70%;
+  box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
+  clear: both;
+  /*padding: 13px 10px;*/
+  /*margin-bottom: 20px;*/
+}
+
+.inputs input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+ 
+ 
+}
+
+.inputs .checkboxy {
+  display: inline;
+  position: static;
+  height: 25px;
+  margin-top: 10px;
+  clear: both;
+}
+
+.inputs input[type=checkbox]{
+  float: left;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.inputs label.terms {
+  float: left;
+  font-size: 14px;
+ font-family: 'Arial, Helvetica, sans-serif';
+}
+
+.fondo-input {
+  background-position:2% 50%;
+  display: inline-block;  
+ 
+  color: black;
+ 
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: #76B100;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+  color: #76B100;
+}
+
+.letras{
+  color: #999999;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  width:100%; 
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child::before, table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child::before
+{
+  background-color: #76B100 !important;
+}
+.cuadrosup {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.guardar{
+  background-color: #777152;
+  width: 150px;
+  color:#fff;
+  
+}
+p{
+  padding: 2px;
+}
+h2
+{
+  margin: 0;
+  
+  color: black;
+  text-align: left;
+  
+  border-bottom: 1px solid #000000;
+  font-family: 'Arial, Helvetica, sans-serif';
+  margin: 0 0 10px 0;
+  padding: 5px 5px 10px 0px;
+}
+.derecha{
+   float: right;
+  margin-right: 2.564102564102564%;
+  width: 48%;
+  /*border: 1px solid;*/
+}
+
+.derecha-profesiones{
+   float: right;
+  margin-right: 2.564102564102564%;
+  width: 48%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid;
+}
+
+.izquierda{
+  float: left;
+  margin-left: 0px;
+  /*border: 1px solid #000;*/
+  width: 48%;
+  clear: both;
+  margin-left: 0;
+}
+.izquierda-profesiones{
+  float: left;
+ margin-right: 2.564102564102564%;
+  width: 48%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid;
+}
+.edad{
+  padding: 10px
+}
+
+.titulos{
+  width: 30px
+}
+
+/*Propiedades del top*/
+
+.table-top{
+box-shadow: 0px 0px 10px #000;
+ background:#fff;}
+
+.disponible{
+  color: red;
+  font-family: 'Arial, Helvetica, sans-serif';
+  
+  /*height:89px;*/
+ }
+ .seguimiento{
+box-shadow: 0px 0px 10px #000;
+border: #000
+ }
+
+ .encabezado-seguimiento{
+  font-weight: normal;
+  font-size: 16px;
+ }
+ .detalle-seguimiento{
+  font-size: 16px;
+  font-weight: normal;
+ }
+ .seleccion_personal{
+  font-size: 16px;
+ }
+
+
+.detalle-listado{
+  font-size: 16px;
+}
+
+.detalle-sr-g-rrhh{
+font-size: 16px;  
+}
+
+
+.btn-login{
+  background-color: #95ACAD
+}
+
+.encabezado{
+  text-align: left;
+  font-size:25px;
+  font-family: 'Arial, Helvetica, sans-serif';
+}
+.encabezado-tablas{
+  text-align: left;
+  font-size:16px;
+  font-family: 'Arial, Helvetica, sans-serif';
+}
+
+.cod-solicitud{   /*Muestra el Codigo de la solicitud en las pantallas de Seguimiento */
+  
+  font-size: 16px;
+  opacity: 0.7; 
+}
+.espacio{
+  padding: 0 10px;
+}
+/*.contenedor-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+
+/*
+
+background-image: url(imagenes/minerven.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
+
+
+
+@media only screen and (max-width: 640px){
+
+  body *{
+    font-size: 1.5vw !important;
+  }
+
+}
+*/
+
